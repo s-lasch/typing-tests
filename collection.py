@@ -28,9 +28,11 @@ def get_data():
     time.sleep(1.5)
 
     # enter username
+    assert username != ""
     browser.find_element_by_xpath('//*[@id="middle"]/div[5]/div[3]/form/input[1]').send_keys(username)
 
     # enter password
+    assert password != ""
     browser.find_element_by_xpath('//*[@id="middle"]/div[5]/div[3]/form/input[2]').send_keys(password)
 
     # click sign-in button
