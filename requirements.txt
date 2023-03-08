@@ -1,0 +1,7 @@
+plotly-express
+pandas
+jupyter-dash
+jupyterlab-dash
+dash
+selenium
+bokeh
