@@ -5,6 +5,7 @@ import pandas as pd
 # use a global color palette
 # global color_discrete_sequence
 color_discrete_sequence = px.colors.sequential.RdBu
+color_discrete_sequence_r = px.colors.sequential.RdBu_r
 
 
 def filter_language(df, lang):
@@ -70,7 +71,7 @@ def lang_pie(df):
 		     labels='language',
 		     values='count', 
 		     custom_data=['language'],
-		     color_discrete_sequence=color_discrete_sequence)
+		     color_discrete_sequence=color_discrete_sequence_r)
 	
     pie.update_traces(hovertemplate='<b>Language:</b> %{customdata[0]}<br><b>Tests Taken:</b> %{value}</br>')
     pie.update_layout(title_x=0.5)
