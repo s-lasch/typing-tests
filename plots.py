@@ -121,7 +121,7 @@ def sun(df, lang="All"):
 
     df_sun = filter_language(df, lang)
 
-    fig = px.sunburst(df,
+    fig = px.sunburst(df_sun,
 			  title='<b>Breakdown of Each Mode</b>',
 			  path=['mode', 'mode2'], 
 			  color_discrete_sequence=color_discrete_sequence
