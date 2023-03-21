@@ -15,7 +15,9 @@ def filter_language(df, lang):
 
 # create a pie chart that shows the proportions of each mode of typing test
 def pie(df, lang=None):
-	df_pie = filter_language(df.groupby('mode')['mode'].count().to_frame().rename(columns={'mode':'count'}).reset_index(), lang)
+	df_pie = filter_language(df, lang)
+	
+	df_pie = df_pie.groupby('mode')['mode'].count().to_frame().rename(columns={'mode':'count'}).reset_index()
 			
 	pie = px.pie(df_pie, 
 		     title='<b>Most Common Modes</b>',
