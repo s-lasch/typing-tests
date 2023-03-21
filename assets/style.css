@@ -4,7 +4,7 @@
 	font-size: 14px;
 }
 
-#pie {
+#pie #lang-pie{
 	width:30%;
 	float: left;
 }
@@ -19,6 +19,6 @@
 	width: 30%;
 }
 
-#box-type {
+#box-type #lang-type{
 	width:150px;
 }
