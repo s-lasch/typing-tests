@@ -15,25 +15,25 @@ def filter_language(df, lang):
 
     Parameters:
         DataFrame df: DataFrame to filter.
-        str lang: Desired language to filter for. If None, then return data for all langauges
+        str lang: Desired language to filter for. If "All", then return data for all langauges
                   available.
     Returns:
         A pandas DataFrame.
     '''
 
-    if lang is not None:
+    if lang != "All":
         return df[df["language"] == lang]
 
     return df
 
 # create a pie chart that shows the proportions of each mode of typing test
-def pie(df, lang=None):
+def pie(df, lang="All"):
     '''
     Creates a pie chart showing proportions of each typing test mode.
 
     Parameters:
         DataFrame df: Input data.
-        str lang:     Desired language. If None, will use all languages available.
+        str lang:     Desired language. If "All", will use all languages available.
     Returns:
         Pie chart depicting proportions of each typing test mode.
     '''
@@ -79,7 +79,7 @@ def lang_pie(df):
 
 
 # create a series of boxplots that shows descriptive stats about the data
-def box(df, title, col, lang=None):
+def box(df, title, col, lang="All"):
     '''
     Create a series of box-and-whisker plots that shows stats. There is an option to filter by 
     language for this plot.
@@ -88,7 +88,7 @@ def box(df, title, col, lang=None):
         DataFrame df: Input data.
         str title:    Title of the plot.
         str col:      Column to show. One of 'wpm', 'acc', 'rawWpm', or 'consistency'.
-        str lang:     Desired language. If None, will use all languages available.
+        str lang:     Desired language. If "All", will use all languages available.
     '''
 
     df_box = filter_language(df, lang)
@@ -110,13 +110,13 @@ def box(df, title, col, lang=None):
 
 
 # create a sunburst chart that shows the proportions of modes WITHIN each mode
-def sun(df, lang=None):
+def sun(df, lang="All"):
     '''
     Create a sunburst chart showing nested proportions.
 
     Parameters:
         DataFrame df: Input data.
-        str lang:     Desired language. If None, will use all languages available.
+        str lang:     Desired language. If "All", will use all languages available.
     '''
 
     df_sun = filter_language(df, lang)
