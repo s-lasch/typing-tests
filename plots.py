@@ -7,8 +7,8 @@ global color_discrete_sequence
 color_discrete_sequence = px.colors.sequential.RdBu
 
 # create a pie chart that shows the proportions of each mode of typing test
-def pie(df):
-	df_pie = df.groupby('mode')['mode'].count().to_frame().rename(columns={'mode':'count'}).reset_index()
+def pie(df, lang):
+	df_pie = df[df["language"] == lang].groupby('mode')['mode'].count().to_frame().rename(columns={'mode':'count'}).reset_index()
 	pie = px.pie(df_pie, 
 		     title='<b>Most Common Modes</b>',
 		     labels='mode',
