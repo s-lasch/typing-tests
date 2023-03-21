@@ -6,9 +6,17 @@ import pandas as pd
 global color_discrete_sequence
 color_discrete_sequence = px.colors.sequential.RdBu
 
+
+def filter_language(df, lang):
+	if lang is not None:
+		return df[df["language"] == lang]
+	
+	return df
+
 # create a pie chart that shows the proportions of each mode of typing test
-def pie(df, lang):
-	df_pie = df[df["language"] == lang].groupby('mode')['mode'].count().to_frame().rename(columns={'mode':'count'}).reset_index()
+def pie(df, lang=None):
+	df_pie = filter_language(df.groupby('mode')['mode'].count().to_frame().rename(columns={'mode':'count'}).reset_index(), lang)
+			
 	pie = px.pie(df_pie, 
 		     title='<b>Most Common Modes</b>',
 		     labels='mode',
@@ -23,8 +31,10 @@ def pie(df, lang):
 
 
 # create a series of boxplots that shows descriptive stats about the data
-def box(df, title, col):
-	fig = px.box(df, 
+def box(df, title, col, lang=None):
+	df_box = filter_language(df, lang)
+	
+	fig = px.box(df_box, 
 		     title=f'<b>{title.upper()}</b>', 
 		     y=col,
 		     facet_col='mode',
@@ -33,7 +43,7 @@ def box(df, title, col):
 					 'quote': color_discrete_sequence[2], 'custom': color_discrete_sequence[3], 
 					 'zen': color_discrete_sequence[4]
 					},
-		     category_orders={'mode': df['mode'].value_counts().to_frame().reset_index().rename(columns={'index':'mode', 'mode':'count'}).sort_values('count', ascending=False)['mode']}
+		     category_orders={'mode': df_box['mode'].value_counts().to_frame().reset_index().rename(columns={'index':'mode', 'mode':'count'}).sort_values('count', ascending=False)['mode']}
 		    )
 	
 	fig.update_layout(title_x=0.5, showlegend=False)
@@ -41,7 +51,9 @@ def box(df, title, col):
 
 
 # creat a sunburst chart that shows the proportions of modes WITHIN each mode
-def sun(df):
+def sun(df, lang=None):
+	df_sun = filter_language(df, lang)
+	
 	fig = px.sunburst(df,
 			  title='<b>Breakdown of Each Mode</b>',
 			  path=['mode', 'mode2'], 
