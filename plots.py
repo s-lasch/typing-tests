@@ -46,7 +46,6 @@ def pie(df, lang=None):
 		     labels='mode',
 		     values='count', 
 		     custom_data=['mode'],
-		     # height=500,
 		     color_discrete_map={'words': color_discrete_sequence[0], 'time': color_discrete_sequence[1],
 					 'quote': color_discrete_sequence[2], 'custom': color_discrete_sequence[3], 
 					 'zen': color_discrete_sequence[4]
@@ -74,7 +73,6 @@ def lang_pie(df):
 		     labels='language',
 		     values='count', 
 		     custom_data=['language'],
-		     # height=500,
 		     color_discrete_sequence=color_discrete_sequence)
 	
     pie.update_traces(hovertemplate='<b>Language:</b> %{customdata[0]}<br><b>Tests Taken:</b> %{value}</br>')
@@ -128,8 +126,10 @@ def sun(df, lang=None):
     fig = px.sunburst(df,
 			  title='<b>Breakdown of Each Mode</b>',
 			  path=['mode', 'mode2'], 
-			  color_discrete_sequence=color_discrete_sequence
-			 )
+			  color_discrete_map={'words': color_discrete_sequence[0], 'time': color_discrete_sequence[1],
+					 'quote': color_discrete_sequence[2], 'custom': color_discrete_sequence[3], 
+					 'zen': color_discrete_sequence[4]
+					})
 	
     fig.update_layout(title_x=0.5)
     return fig
