@@ -47,7 +47,10 @@ def pie(df, lang=None):
 		     values='count', 
 		     custom_data=['mode'],
 		     # height=500,
-		     color_discrete_sequence=color_discrete_sequence)
+		     color_discrete_map={'words': color_discrete_sequence[0], 'time': color_discrete_sequence[1],
+					 'quote': color_discrete_sequence[2], 'custom': color_discrete_sequence[3], 
+					 'zen': color_discrete_sequence[4]
+					})
 	
     pie.update_traces(hovertemplate='<b>Mode:</b> %{customdata[0]}<br><b>Tests Taken:</b> %{value}</br>')
     pie.update_layout(title_x=0.5)
