@@ -26,6 +26,8 @@
 
 #box-type {
 	width:150px;
+    float: top;
+    padding: 0 0 0 6%;
 }
 
 #lang-type{
