@@ -1,7 +1,10 @@
-plotly-express
-pandas
-jupyter-dash
-jupyterlab-dash
-dash
-selenium
 bokeh
+dash
+jupyter_dash
+numpy
+pandas
+pandas_bokeh
+plotly
+plotly_express
+seaborn
+
