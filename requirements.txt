@@ -1,10 +1,6 @@
-bokeh
-dash
-jupyter_dash
+dash==2.14.2
+jupyter_dash==0.4.2
+gunicorn
 numpy
 pandas
-pandas_bokeh
 plotly
-plotly_express
-seaborn
-
