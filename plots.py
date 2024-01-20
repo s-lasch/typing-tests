@@ -95,6 +95,8 @@ def box(df, title, col, lang="All"):
 
     df_box = filter_language(df, lang)
 
+    print(df_box.columns)
+
     fig = px.box(df_box, 
 		     title=f'<b>{title.upper()}</b>', 
 		     y=col,
@@ -105,7 +107,7 @@ def box(df, title, col, lang="All"):
 					 'quote': color_discrete_sequence[2], 'custom': color_discrete_sequence[3], 
 					 'zen': color_discrete_sequence[4]
 					}
-		    )
+		)
 	
     fig.update_layout(title_x=0.5, showlegend=False)
     return fig
