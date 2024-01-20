@@ -53,7 +53,7 @@ app.layout = html.Div(id='content', children=[
 def update_boxes(col, lang):
     title = 'raw wpm' if col == 'rawWpm' else col
     title = 'accuracy' if col == 'acc' else title
-    return plots.box(df, title, col, lang)
+    return plots.box(df, title, col, lang), plots.sun(df, lang)
 
 
 # run the application
