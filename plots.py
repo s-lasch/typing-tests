@@ -40,6 +40,8 @@ def pie(df, lang="All"):
 
     df_pie = filter_language(df, lang)
 
+    print(df_pie.columns)
+
     df_pie = df_pie.groupby('mode')['mode'].count().to_frame().rename(columns={'mode':'count'}).reset_index()
     
     pie = px.pie(df_pie, 
