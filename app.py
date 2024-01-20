@@ -11,6 +11,7 @@ import plots # from this repo
 df = pd.read_csv('results.csv', delimiter='|')
 
 pie = plots.pie(df)
+lang_pie = plots.lang_pie(df)
 wpm = plots.box(df, 'wpm', 'wpm')
 sun = plots.sun(df)
 
@@ -37,6 +38,7 @@ app.layout = html.Div(id='content', children=[
         html.Br(),
         html.Br()
     ]),
+    dcc.Graph(id='lang-pie', figure=lang_pie)
     dcc.Graph(id='sun-burst', figure=sun)
 ])
 
