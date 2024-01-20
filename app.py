@@ -32,6 +32,9 @@ app.layout = html.Div(id='content', children=[
     dcc.Graph(id='pie', figure=pie),
     html.Div(id='boxplot', children=[
         dcc.Graph(id='box', figure=wpm),
+        dcc.Dropdown(id='lang-type',
+                     options=[{'label':'All', 'value':'All'}] + [{'label':lang[0].upper()+lang[1:].replace('_', ' '), 'value':lang} for lang in df['language'].unique()],
+                     value='All'),
         dcc.Dropdown(id='box-type',
                      options=[{'label':col, 'value':col} for col in df.columns[2:6]],
                      value='wpm'),
@@ -45,11 +48,12 @@ app.layout = html.Div(id='content', children=[
 # callback function
 @app.callback(
     Output('box', 'figure'),
-    Input('box-type', 'value'))
-def update_boxes(col):
+    Input('box-type', 'value'),
+    Input('lang-type', 'value'))
+def update_boxes(col, lang):
     title = 'raw wpm' if col == 'rawWpm' else col
     title = 'accuracy' if col == 'acc' else title
-    return plots.box(df, title, col)
+    return plots.box(df, title, col, lang)
 
 
 # run the application
