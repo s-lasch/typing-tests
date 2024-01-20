@@ -8,7 +8,7 @@ import plots # from this repo
 
 
 # collect data and create default plots
-df = pd.read_csv("results.csv")
+df = pd.read_csv('results.csv', delimiter='|')
 
 pie = plots.pie(df)
 wpm = plots.box(df, 'wpm', 'wpm')
