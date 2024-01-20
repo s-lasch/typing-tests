@@ -38,7 +38,7 @@ app.layout = html.Div(id='content', children=[
         html.Br(),
         html.Br()
     ]),
-    dcc.Graph(id='lang-pie', figure=lang_pie)
+    dcc.Graph(id='lang-pie', figure=lang_pie),
     dcc.Graph(id='sun-burst', figure=sun)
 ])
 
