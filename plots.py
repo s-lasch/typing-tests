@@ -102,7 +102,7 @@ def box(df, title, col, lang="All"):
 		     y=col,
 		     facet_col='mode',
 		     color='mode',
-             category_orders={'mode': df_box['mode'].value_counts().to_frame().reset_index().rename(columns={'index':'mode', 'mode':'count'}).sort_values('count', ascending=False)['mode']},
+                     # category_orders={'mode': df_box['mode'].value_counts().to_frame().reset_index().rename(columns={'index':'mode', 'mode':'count'}).sort_values('count', ascending=False)['mode']},
 		     color_discrete_map={'time': color_discrete_sequence[0], 'words': color_discrete_sequence[1],
 					 'quote': color_discrete_sequence[2], 'custom': color_discrete_sequence[3], 
 					 'zen': color_discrete_sequence[4]
