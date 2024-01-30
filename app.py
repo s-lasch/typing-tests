@@ -48,7 +48,8 @@ app.layout = html.Div(id='content', children=[
 # callback function
 @app.callback(
     [Output('box', 'figure'),
-     Output('sun-burst', 'figure')],
+     Output('sun-burst', 'figure'),
+     Output('pie', 'figure')],
     [Input('box-type', 'value'),
      Input('lang-type', 'value')])
 def update_boxes(col, lang):
@@ -56,7 +57,8 @@ def update_boxes(col, lang):
     title = 'accuracy' if col == 'acc' else title
     box_figure = plots.box(df, title, col, lang)
     sun_figure = plots.sun(df, lang)
-    return box_figure, sun_figure
+    pie = plots.pie(df, lang)
+    return box_figure, sun_figure, pie
 
 
 
