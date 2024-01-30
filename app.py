@@ -47,13 +47,17 @@ app.layout = html.Div(id='content', children=[
 
 # callback function
 @app.callback(
-    Output('box', 'figure'),
-    Input('box-type', 'value'),
-    Input('lang-type', 'value'))
+    [Output('box', 'figure'),
+     Output('sun-burst', 'figure')],
+    [Input('box-type', 'value'),
+     Input('lang-type', 'value')])
 def update_boxes(col, lang):
     title = 'raw wpm' if col == 'rawWpm' else col
     title = 'accuracy' if col == 'acc' else title
-    return plots.box(df, title, col, lang), plots.sun(df, lang)
+    box_figure = plots.box(df, title, col, lang)
+    sun_figure = plots.sun(df, lang)
+    return box_figure, sun_figure
+
 
 
 # run the application
